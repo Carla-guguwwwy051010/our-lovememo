@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #4a4a4a;
+  background: #fffef0;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+.sticker {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.device-shell::before {
+  content: '';
+  position: absolute;
+  inset: 12px 50% auto;
+  width: 110px;
+  height: 26px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 15;
+}
+
+.doodle-bg {
+  background-image:
+    radial-gradient(circle at 12px 12px, rgba(74, 74, 74, 0.08) 1.3px, transparent 1.4px),
+    linear-gradient(rgba(74, 74, 74, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 74, 74, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 24px 24px;
+}
+
+.tape-piece {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 74px;
+  height: 20px;
+  transform: translateX(-50%) rotate(-4deg);
+  border-radius: 8px;
+  background: rgba(255, 209, 220, 0.65);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bean-eye {
+  position: absolute;
+  top: 34px;
+  width: 6px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2f2f2f;
+}
+
+.bean-face {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 36px 36px 30px 30px;
+  background: linear-gradient(180deg, #fff, #ffe7ed);
+  border: 3px solid #fff;
+}
+
+.bean-face::before,
+.bean-face::after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  width: 6px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2f2f2f;
+}
+
+.bean-face::before {
+  left: 22px;
+}
+
+.bean-face::after {
+  right: 22px;
+}
+
+.character-card {
+  position: absolute;
+  bottom: 0;
+  width: 98px;
+  height: 118px;
+  border: 3px solid #fff;
+  border-radius: 44px 44px 28px 28px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  transition:
+    left 0.38s ease,
+    right 0.38s ease,
+    transform 0.38s ease,
+    box-shadow 0.28s ease;
+}
+
+.character-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-card:hover {
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.1);
+}
+
+.left-character {
+  left: 22px;
+  transform: rotate(-5deg);
+}
+
+.right-character {
+  right: 18px;
+  transform: rotate(5deg);
+}
+
+.doodle-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7), transparent 40%),
+    linear-gradient(135deg, rgba(255, 209, 220, 0.65), rgba(167, 199, 231, 0.75));
+  border-radius: 999px;
+}
+
+.polaroid-card {
+  transform-origin: center top;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-radius: 999px;
+  background: #ffd1dc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-connector {
+  position: absolute;
+  left: 8px;
+  top: 26px;
+  bottom: -8px;
+  width: 2px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(74, 74, 74, 0.45) 0 8px,
+      transparent 8px 15px
+    );
+  transform: rotate(6deg);
+}
+
+.wish-star {
+  position: fixed;
+  left: var(--start-x);
+  top: var(--start-y);
+  z-index: 60;
+  font-size: 16px;
+  color: #ffe28a;
+  text-shadow: 0 0 10px rgba(255, 216, 107, 0.75);
+  animation: wish-drop 1.5s cubic-bezier(0.22, 0.72, 0.24, 1) forwards;
+}
+
+@keyframes wish-drop {
+  0% {
+    transform: translate(0, 0) scale(0.85);
+    opacity: 0.95;
+  }
+  35% {
+    transform: translate(-8px, 70px) scale(1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(calc(50vw - var(--start-x) - 14px), calc(71vh - var(--start-y))) scale(0.38);
+    opacity: 0;
+  }
+}
+
+@keyframes soft-twinkle {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: scale(0.88);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(1.08);
+  }
+}
+
+.animate-soft-twinkle {
+  animation: soft-twinkle 4s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .device-shell {
+    min-height: 820px;
+  }
+}
